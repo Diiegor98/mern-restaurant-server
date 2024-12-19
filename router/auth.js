@@ -6,7 +6,9 @@ const AuthController = require("../controllers/auth");
 //Enrutador
 const api = express.Router();
 
-//Definimos ruta POST y con su controller
+//Ruta para registro y su controller
 api.post("/auth/register", AuthController.register);
+//Ruta para login y su controller
+api.post("/auth/login", AuthController.login);
 
 module.exports = api;
