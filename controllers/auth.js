@@ -61,7 +61,7 @@ async function login(req, res) {
       res.status(200).send({ access_token: jwt.createAccessToken(user) });
     }
   } catch (error) {
-    res.status(500).send({ mg: "Error de servidor" });
+    res.status(500).send({ msg: "Usuario no encontrado" });
   }
 }
 
