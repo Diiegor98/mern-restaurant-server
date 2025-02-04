@@ -9,6 +9,7 @@ const MenuSchema = mongoose.Schema({
   price: Number,
   detail: String,
   category: String,
+  image: String,
 });
 
 module.exports = mongoose.model("Menu", MenuSchema);
