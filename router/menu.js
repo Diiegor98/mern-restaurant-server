@@ -10,7 +10,11 @@ const api = express.Router();
 const multiparty = require("connect-multiparty");
 const md_upload = multiparty({ uploadDir: "./uploads/menu" });
 
-//Ruta para registro y su controller
+//Ruta para crear un menu y su controller
 api.post("/menu", [md_upload], MenuController.createMenu);
+//Ruta obtener todos los menus
+api.get("/menus", MenuController.getMenus);
+//Ruta actualizar un menu
+api.put("/menu/:id", [md_upload], MenuController.updateMenu);
 
 module.exports = api;
