@@ -34,7 +34,6 @@ async function getMenus(req, res) {
 async function updateMenu(req, res) {
   //Id del menu que voy a actualizar
   const { id } = req.params;
-  console.log(id);
 
   //Nuevos datos del menu
   const menu = req.body;
@@ -54,8 +53,22 @@ async function updateMenu(req, res) {
   }
 }
 
+//Eliminar menu
+async function deleteMenu(req, res) {
+  const { id } = req.params;
+
+  //Actualizar menu
+  try {
+    await Menu.findByIdAndDelete(id);
+    res.status(200).send({ msg: "Se eliminó correctamente" });
+  } catch (error) {
+    res.status(400).send({ msg: "Error al eliminar" });
+  }
+}
+
 module.exports = {
   createMenu,
   getMenus,
   updateMenu,
+  deleteMenu,
 };

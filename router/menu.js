@@ -16,5 +16,8 @@ api.post("/menu", [md_upload], MenuController.createMenu);
 api.get("/menus", MenuController.getMenus);
 //Ruta actualizar un menu
 api.put("/menu/:id", [md_upload], MenuController.updateMenu);
+//Ruta eliminar un menu
+api.delete("/menu/:id", MenuController.deleteMenu);
+
 
 module.exports = api;
