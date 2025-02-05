@@ -66,9 +66,22 @@ async function deleteMenu(req, res) {
   }
 }
 
+//Buscar un menu
+async function searchMenu(req, res) {
+  const { id } = req.params;
+
+  try {
+    const menu = await Menu.findOne({ _id: id });
+    res.status(200).send(menu);
+  } catch (error) {
+    res.status(400).send({ msg: `Menu no encontrado` });
+  }
+}
+
 module.exports = {
   createMenu,
   getMenus,
   updateMenu,
   deleteMenu,
+  searchMenu,
 };

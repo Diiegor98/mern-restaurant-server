@@ -18,6 +18,8 @@ api.get("/menus", MenuController.getMenus);
 api.put("/menu/:id", [md_upload], MenuController.updateMenu);
 //Ruta eliminar un menu
 api.delete("/menu/:id", MenuController.deleteMenu);
+//Buscar un menu
+api.get("/menu/:id", MenuController.searchMenu)
 
 
 module.exports = api;
