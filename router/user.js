@@ -12,4 +12,7 @@ const api = express.Router();
 //Ruta para registro y su controller
 api.get("/user/me", [md_auth.mdAuth], UserController.getUser);
 
+//Ruta para obtener todos los usuarios
+api.get("/users", UserController.getUsers);
+
 module.exports = api;
