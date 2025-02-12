@@ -1,24 +1,36 @@
 const Menu = require("../models/menu");
-const image = require("../utils/image");
+const { getPathImage } = require("../utils/image");
 
-//Crear menu
 async function createMenu(req, res) {
-  const menu = new Menu(req.body);
 
-  //Url de la imagen
-  if (req.files.image) {
-    const imagePath = image.getPathImage(req.files.image);
-    menu.image = imagePath;
+  if (!req.files || !req.files.image) {
+    return res.status(400).send({ msg: "No se ha enviado la imagen" });
   }
 
-  //Guarda en DB
+  const { name, price, detail, category } = req.body;
+  const { image } = req.files;
+
+  // Obtener la ruta de la imagen
+  const imagePath = getPathImage(image);
+
+  const menu = new Menu({
+    name,
+    status: true,
+    price,
+    category,
+    detail,
+    image: imagePath,
+  });
+
   try {
     await menu.save();
-    res.status(200).send({ msg: "Menu guardado" });
+    res.status(200).send({ msg: "Menú guardado correctamente" });
   } catch (error) {
-    res.status(400).send({ msg: "Error al crear el menu" });
+    console.error("❌ Error al crear el menú:", error);
+    res.status(400).send({ msg: "Error al crear el menú", error });
   }
 }
+
 
 //Obtener menus
 async function getMenus(req, res) {
