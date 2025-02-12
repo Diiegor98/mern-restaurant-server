@@ -2,7 +2,6 @@ const Menu = require("../models/menu");
 const { getPathImage } = require("../utils/image");
 
 async function createMenu(req, res) {
-
   if (!req.files || !req.files.image) {
     return res.status(400).send({ msg: "No se ha enviado la imagen" });
   }
@@ -31,7 +30,6 @@ async function createMenu(req, res) {
   }
 }
 
-
 //Obtener menus
 async function getMenus(req, res) {
   try {
@@ -51,15 +49,21 @@ async function updateMenu(req, res) {
   const menu = req.body;
 
   //Url de la imagen
-  if (req.files.image) {
-    const imagePath = image.getPathImage(req.files.image);
+  if (req.files && req.files.image) {
+    const imagePath = getPathImage(req.files.image);
     menu.image = imagePath;
   }
 
   //Actualizar menu
   try {
-    await Menu.findByIdAndUpdate({ _id: id }, menu);
-    res.status(200).send({ msg: "Se actualizó correctamente" });
+    const updatedMenu = await Menu.findByIdAndUpdate(
+      id,
+      { $set: menu },
+      { new: true, omitUndefined: true } // Retorna el nuevo documento sin sobrescribir los valores no enviados
+    );
+    res
+      .status(200)
+      .send({ msg: "Menú actualizado correctamente", menu: updatedMenu });
   } catch (error) {
     res.status(400).send({ msg: "Error al actualizar" });
   }
