@@ -5,6 +5,7 @@ const OrderSchema = mongoose.Schema({
   date: String,
   menu: [String],
   status: Boolean,
+  price: Number
 });
 
 module.exports = mongoose.model("Order", OrderSchema);

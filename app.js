@@ -16,6 +16,7 @@ app.use(cors());
 const authRoutes = require("./router/auth");
 const userRoutes = require("./router/user");
 const menuRoutes = require("./router/menu");
+const orderRoutes = require("./router/order");
 
 //Config Body Parser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,5 +29,6 @@ app.use(express.static("uploads"));
 app.use(`/api/${apiVersion}`, authRoutes);
 app.use(`/api/${apiVersion}`, userRoutes);
 app.use(`/api/${apiVersion}`, menuRoutes);
+app.use(`/api/${apiVersion}`, orderRoutes);
 
 module.exports = app;

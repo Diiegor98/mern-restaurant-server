@@ -13,6 +13,7 @@ async function getUser(req, res) {
   }
 }
 
+//Obtener todos los usuarios
 async function getUsers(req, res) {
   try {
     const users = await User.find();
