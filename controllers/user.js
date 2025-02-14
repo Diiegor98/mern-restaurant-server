@@ -33,7 +33,6 @@ async function updateUser(req, res) {
 
   //Actualizar user
   try {
-    console.log(user)
     const updatedUser = await User.findByIdAndUpdate(
       id,
       { $set: user },
