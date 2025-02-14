@@ -15,4 +15,7 @@ api.get("/user/me", [md_auth.mdAuth], UserController.getUser);
 //Ruta para obtener todos los usuarios
 api.get("/users", UserController.getUsers);
 
+//Ruta para actualizar un usuario
+api.put("/user/:id", UserController.updateUser)
+
 module.exports = api;
