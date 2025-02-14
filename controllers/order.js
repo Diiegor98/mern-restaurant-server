@@ -1,5 +1,27 @@
 const Order = require("../models/order");
 
+//Crear una orden
+async function createOrder(req, res) {
+  const { menu, user, price, date, status } = req.body;
+
+  const order = new Order({
+    menu,
+    user,
+    date,
+    status,
+    price: parseInt(price),
+  });
+
+  console.log(order);
+
+  try {
+    await order.save();
+    res.status(200).send({ msg: "Orden creada con éxito" });
+  } catch (error) {
+    res.status(400).send({ msg: `Error al crear la orden` });
+  }
+}
+
 //Obtenemos todas las ordenes
 async function getOrders(req, res) {
   try {
@@ -36,4 +58,5 @@ async function updateOrder(req, res) {
 module.exports = {
   getOrders,
   updateOrder,
+  createOrder,
 };
