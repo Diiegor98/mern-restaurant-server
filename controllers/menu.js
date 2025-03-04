@@ -11,7 +11,7 @@ async function createMenu(req, res) {
   const { image } = req.files;
 
   // Obtener la ruta de la imagen
-  const imagePath = getPathImage(image);
+  // const imagePath = getPathImage(image);
 
   const menu = new Menu({
     name,
@@ -19,13 +19,12 @@ async function createMenu(req, res) {
     price,
     category,
     detail,
-    image: imagePath,
+    image: image.path,
   });
 
   try {
-    console.log(req.files.image)
-    console.log(req.files.imagePath)
     await menu.save();
+    console.log(menu)
     res.status(200).send({ msg: 'Menu creado correctamente' });
   } catch (error) {
     console.error("❌ Error al crear el menú:", error);
