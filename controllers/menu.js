@@ -9,6 +9,7 @@ async function createMenu(req, res) {
   const { name, price, detail, category } = req.body;
   const { image } = req.files;
 
+
   // Obtener la ruta de la imagen
   const imagePath = getPathImage(image);
 
