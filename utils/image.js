@@ -1,10 +1,8 @@
 function getPathImage(file) {
   const filePath = file.path;
-  const fileSplit = filePath.split("\\");
+  const fileSplit = filePath.split("/"); // Asegurar compatibilidad con Linux/macOS
 
-  return `${fileSplit[1]}/${fileSplit[2]}`;
+  return fileSplit.slice(1).join("/"); // Excluir "uploads/"
 }
 
-module.exports = {
-  getPathImage,
-};
+module.exports = { getPathImage };
