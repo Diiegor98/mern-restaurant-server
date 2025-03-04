@@ -18,6 +18,7 @@ const connectDB = async () => {
     await mongoose.connect(`mongodb+srv://${dbUser}:${dbPass}@${dbHost}/`);
     app.listen(port, () => {
         console.log(`API REST`)
+        console.log(`${port}`)
     })
   } catch (error) {
     console.log(`Error al conectar a la base de datos`, error);
