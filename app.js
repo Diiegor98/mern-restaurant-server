@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //Config Static Folders (Donde se suben todas las imagenes en nuestro server)
-app.use("/uploads");
+app.use(express.static("uploads"));
 
 //Configurar rutas
 app.use(`/api/${apiVersion}`, authRoutes);
