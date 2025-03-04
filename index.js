@@ -6,7 +6,7 @@ require("dotenv").config();
 const dbUser = process.env.DB_USER;
 const dbPass = process.env.DB_PASS;
 const dbHost = process.env.DB_HOST;
-const port = process.env.PORT
+const port = process.env.PORT || 3977
 
 //Server
 const app = require('./app')
