@@ -9,8 +9,6 @@ async function createMenu(req, res) {
   const { name, price, detail, category } = req.body;
   const { image } = req.files;
 
-  // Obtener la ruta de la imagen
-  const imagePath = image.path.replace("uploads/", "");
 
   const menu = new Menu({
     name,
@@ -18,7 +16,7 @@ async function createMenu(req, res) {
     price,
     category,
     detail,
-    image: imagePath,
+    image,
   });
 
   try {
