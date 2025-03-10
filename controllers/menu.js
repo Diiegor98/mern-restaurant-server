@@ -42,9 +42,8 @@ async function updateMenu(req, res) {
   const menu = req.body;
 
   //Url de la imagen
-  if (req.files && req.file.path) {
-    const imageUrl = req.file.path;
-    menu.image = imageUrl;
+  if (req.file && req.file.path) {
+    menu.image = req.file.path;
   }
 
   //Actualizar menu
