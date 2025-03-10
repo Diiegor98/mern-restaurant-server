@@ -1,9 +1,6 @@
 const Menu = require("../models/menu");
 
 async function createMenu(req, res) {
-  if (!req.files || !req.files.image) {
-    return res.status(400).send({ msg: "No se ha enviado la imagen" });
-  }
 
   const { name, price, detail, category } = req.body;
   const imageUrl = req.file.path;
@@ -19,7 +16,6 @@ async function createMenu(req, res) {
 
   try {
     await menu.save();
-    console.log(menu);
     res.status(200).send({ msg: "Menu creado correctamente" });
   } catch (error) {
     console.error("❌ Error al crear el menú:", error);
