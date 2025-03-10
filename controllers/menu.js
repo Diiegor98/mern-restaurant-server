@@ -1,5 +1,4 @@
 const Menu = require("../models/menu");
-const { getPathImage } = require("../utils/image");
 
 async function createMenu(req, res) {
   if (!req.files || !req.files.image) {
@@ -7,8 +6,7 @@ async function createMenu(req, res) {
   }
 
   const { name, price, detail, category } = req.body;
-  const { image } = req.files;
-
+  const imageUrl = req.file.path;
 
   const menu = new Menu({
     name,
@@ -16,7 +14,7 @@ async function createMenu(req, res) {
     price,
     category,
     detail,
-    image,
+    image: imageUrl,
   });
 
   try {
@@ -48,9 +46,9 @@ async function updateMenu(req, res) {
   const menu = req.body;
 
   //Url de la imagen
-  if (req.files && req.files.image) {
-    const imagePath = getPathImage(req.files.image);
-    menu.image = imagePath;
+  if (req.files && req.file.path) {
+    const imageUrl = req.file.path;
+    menu.image = imageUrl;
   }
 
   //Actualizar menu

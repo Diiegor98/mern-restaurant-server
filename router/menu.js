@@ -6,16 +6,15 @@ const MenuController = require("../controllers/menu");
 //Enrutador
 const api = express.Router();
 
-//Middleware Connect-Multiparty
-const multiparty = require("connect-multiparty");
-const md_upload = multiparty({ uploadDir: "./uploads/menu" });
+//Middleware Cloudinary
+const upload = require("../middlewares/upload");
 
 //Ruta para crear un menu y su controller
-api.post("/menu", md_upload, MenuController.createMenu);
+api.post("/menu", upload.single("image"), MenuController.createMenu);
 //Ruta obtener todos los menus
 api.get("/menus", MenuController.getMenus);
 //Ruta actualizar un menu
-api.put("/menu/:id", md_upload, MenuController.updateMenu);
+api.put("/menu/:id", upload.single("image"), MenuController.updateMenu);
 //Ruta eliminar un menu
 api.delete("/menu/:id", MenuController.deleteMenu);
 //Buscar un menu
