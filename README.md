@@ -19,8 +19,8 @@ Se integró Multer junto a Cloudinary para permitir subir imágenes a la nube. E
 
 SweetAlert2 brinda diálogos de confirmación, alertas de éxito/error, etc.
 
-## 📡 Backend
-🔗 Repositorio del backend: [ACÁ](https://github.com/Diiegor98/mern-restaurant-client)
+## 📡 Frontend
+🔗 Repositorio del frontend: [ACÁ](https://github.com/Diiegor98/mern-restaurant-client)
 
 ## 🚀 Deploy
 ⚠️ IMPORTANTE: La primer carga puede demorar un poco ya que están deployados en sitios gratuitos. 
